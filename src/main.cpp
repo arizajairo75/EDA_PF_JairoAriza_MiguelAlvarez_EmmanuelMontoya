@@ -1,5 +1,7 @@
-#ifndef PARSER_H
-#define PARSER_H
+#include "parser.h"
+#include "parser.cpp"
+#include "main.h"
+#include <iostream>
 #include "parser.h"
 #include <iostream>
 #include <string>
@@ -9,11 +11,11 @@
 using namespace std;
 
 
+int main(){
+    parser();
+     return 0;
+}
 
-class parser {
-
-};
 
 
 
-#endif //PARSER_H
