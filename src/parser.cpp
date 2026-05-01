@@ -1,20 +1,16 @@
 #include "parser.h"
 #include <iostream>
-#include <string>
-#include <fstream>
 #include <unordered_map>
-#include <vector>
+#include <string>
 using namespace std;
 
-class parser {
-public:
-    static FILE* parser::cargarDataset(const string& path) {
+    FILE* parser::cargarDataset(const std::string& path) {
         FILE* dataset = fopen(path.c_str(), "r");
         return dataset;
     }
 
 
-static int parser::confirmarDataset(FILE* dataset) {
+    int parser::confirmarDataset(FILE* dataset) {
 
         if(!dataset) {
             cout<<"error al abrir archivo."<<endl;
@@ -25,7 +21,7 @@ static int parser::confirmarDataset(FILE* dataset) {
         return 0;
     }
 
-        static int parser::contadorNodos(FILE* dataset){
+    int parser::contadorNodos(FILE* dataset){
 
         char line[199]; //aca se declara un el arreglo donde se guarda el nodo, el valor de la dimension es para que sea lo suficientemente grande como para almacenar el contenido del dataset
         unordered_map<int,int> id_nodo;
@@ -44,17 +40,14 @@ static int parser::confirmarDataset(FILE* dataset) {
                 i++;
                 id_nodo[v]= i;
             }
-            printf("%d %d\n",u,v);
-            printf("%d %d\n",id_nodo[u],id_nodo[v]);
+
 
         }
+        printf("nodos: " "%d\n", i);
         fclose(dataset);
 
         return 0;
     }
 
-private:
-
-};
 
 

@@ -1,24 +1,18 @@
 #ifndef PARSER_H
 #define PARSER_H
-#include "parser.h"
-#include <iostream>
+
 #include <string>
-#include <fstream>
-#include <unordered_map>
-#include <vector>
-using namespace std;
+#include <cstdio>
 
 
+    class parser {
 
-class parser {
-public:
+    public:
+        static FILE* cargarDataset(const std::string& path);
+        static int confirmarDataset(FILE* dataset);
+        static int contadorNodos(FILE* dataset);
 
-    static FILE* cargarDataset(const string& path);
-    static int confirmarDataset(FILE* dataset);
-    static int contadorNodos(FILE* dataset);
-
-};
-
+    };
 
 
 #endif //PARSER_H
