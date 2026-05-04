@@ -11,6 +11,7 @@
         static FILE* cargarDataset(const std::string& path);
         static int confirmarDataset(FILE* dataset);
         static int contadorNodos(FILE* dataset);
+        static int contadorAristas(FILE* dataset);
 
     };
 

@@ -44,9 +44,13 @@ using namespace std;
 
         }
         printf("nodos: " "%d\n", i);
-        fclose(dataset);
 
         return 0;
+    }
+
+int parser::contadorAristas(FILE* dataset) {
+
+
     }
 
 
