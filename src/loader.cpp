@@ -1,16 +1,16 @@
-#include "parser.h"
+#include "loader.h"
 #include <iostream>
 #include <unordered_map>
 #include <string>
 using namespace std;
 
-    FILE* parser::cargarDataset(const std::string& path) {
+    FILE* loader::cargarDataset(const std::string& path) {
         FILE* dataset = fopen(path.c_str(), "r");
         return dataset;
     }
 
 
-    int parser::confirmarDataset(FILE* dataset) {
+    int loader::confirmarDataset(FILE* dataset) {
 
         if(!dataset) {
             cout<<"error al abrir archivo."<<endl;
@@ -21,7 +21,7 @@ using namespace std;
         return 0;
     }
 
-    int parser::contadorNodos(FILE* dataset){
+    int loader::contadorNodos(FILE* dataset){
 
         char line[199]; //aca se declara un el arreglo donde se guarda el nodo, el valor de la dimension es para que sea lo suficientemente grande como para almacenar el contenido del dataset
         unordered_map<int,int> id_nodo;
@@ -48,7 +48,7 @@ using namespace std;
         return 0;
     }
 
-int parser::contadorAristas(FILE* dataset) {
+int loader::contadorAristas(FILE* dataset) {
 
 
     }

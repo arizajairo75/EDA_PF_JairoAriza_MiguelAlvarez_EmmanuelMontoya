@@ -1,4 +1,4 @@
-#include "parser.h"
+#include "loader.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -9,10 +9,10 @@ int main() {
 
 
 
-    FILE* dataset = parser::cargarDataset("data/roadNet-PA.txt");
-    parser::confirmarDataset(dataset);
-    if (parser::confirmarDataset(dataset) == 0) {
-        parser::contadorNodos(dataset);
+    FILE* dataset = loader::cargarDataset("data/roadNet-PA.txt");
+    loader::confirmarDataset(dataset);
+    if (loader::confirmarDataset(dataset) == 0) {
+        loader::contadorNodos(dataset);
     }else {
         return 1;
     }

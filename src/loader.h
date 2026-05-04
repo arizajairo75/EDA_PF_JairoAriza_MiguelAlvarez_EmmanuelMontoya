@@ -5,7 +5,7 @@
 #include <cstdio>
 
 
-    class parser {
+    class loader {
 
     public:
         static FILE* cargarDataset(const std::string& path);
