@@ -5,18 +5,15 @@
 #include <string>
 
 using namespace std;
-graph graph;
 
-unordered_map<int,int> id_nodo;
-int i = 0;//contador del id_nodo
 
-    FILE* loadData(const std::string& path) {
+    FILE* loader::loadData(const std::string& path) {
         FILE* dataset = fopen(path.c_str(), "r");
         return dataset;
     }
 
 
-    int confirmarData(FILE* dataset) {
+    int loader::confirmarData(FILE* dataset) {
 
         if(!dataset) {
             cout<<"error al abrir archivo."<<endl;
@@ -27,10 +24,10 @@ int i = 0;//contador del id_nodo
         return 0;
     }
 
-    int numEdges(FILE* dataset){
+    int loader::numEdges(FILE* dataset){
 
         char line[199]; //aca se declara un el arreglo donde se guarda el nodo, el valor de la dimension es para que sea lo suficientemente grande como para almacenar el contenido del dataset
-        unordered_map<int,int> id_nodo;
+
 
 
 
@@ -50,35 +47,34 @@ int i = 0;//contador del id_nodo
 
         }
         printf("nodos: " "%d\n", i);
-
-        return i;
         fclose(dataset);
+        return i;
+
     }
 
-      int listaAdj(FILE* dataset) {
+        int loader::listaAdj(FILE* dataset) {
+        loader::loadData("data/roadNet-PA.txt");
+        graph g(i);
         srand(42);
         char line[200];
-        int i = 0;
         int xu;
         int xv;
 
         while (fgets(line, sizeof(line), dataset)) {
             int u, v;
-
             if (line [0] == '#') continue;
+            int peso = rand() % 10 + 1;
             sscanf(line, "%d %d", &u, &v);
             if (u<v) {
-                int peso = rand() % 10 + 1;
                 xu = id_nodo[u];
                 xv = id_nodo[v];
-                graph.addEdge(xu, xv, peso);
+                g.addEdge(xu, xv, peso);
+                cout<<xu<<" "<<xv<<" "<<peso<<endl;
             }
 
-
-
-
         }
-
+            fclose(dataset);
+            return 0;
     }
 
 

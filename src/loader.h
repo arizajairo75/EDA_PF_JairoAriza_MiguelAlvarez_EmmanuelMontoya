@@ -12,6 +12,7 @@ class loader {
         FILE* loadData(const std::string& path);
         int confirmarData(FILE* dataset);
         int numEdges(FILE* dataset);
+        int listaAdj(FILE* dataset);
 
 
     private:
