@@ -7,24 +7,18 @@
 
 
 int main() {
-
     loader p;
-
-
-
     FILE* dataset = p.loadData("data/roadNet-PA.txt");
-    p.confirmarData(dataset);
+
 
     if (p.confirmarData(dataset) == 0) {
-        p.numEdges(dataset);
+        std::cout<<"procesando"<<std::endl;
     }else {
         return 1;
     }
-    p.listaAdj(dataset);
-
-
-
-
+    int numAristas = p.numEdges(dataset);
+    graph g(numAristas);
+    p.listaAdj("data/roadNet-PA.txt", g);
 
     return 0;
 }

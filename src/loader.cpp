@@ -28,9 +28,6 @@ using namespace std;
 
         char line[199]; //aca se declara un el arreglo donde se guarda el nodo, el valor de la dimension es para que sea lo suficientemente grande como para almacenar el contenido del dataset
 
-
-
-
         while(fgets(line, sizeof(line), dataset)){
             int u,v;//se declaran variables del nodo
             if (line[0] == '#') continue;//ignora comentarios en el espacio 0 de la linea
@@ -52,29 +49,31 @@ using namespace std;
 
     }
 
-        int loader::listaAdj(FILE* dataset) {
-        loader::loadData("data/roadNet-PA.txt");
-        graph g(i);
+        int loader::listaAdj(const std::string& path, graph& g) {
+        FILE* dataset2 = fopen("data/roadNet-PA.txt", "r");
+        if (!dataset2) return 1;
         srand(42);
         char line[200];
-        int xu;
-        int xv;
 
-        while (fgets(line, sizeof(line), dataset)) {
-            int u, v;
-            if (line [0] == '#') continue;
+
+    while (fgets(line, sizeof(line), dataset2)) {
+        int u, v;
+        m++;
+        if (line[0] == '#') continue;
+        sscanf(line, "%d %d", &u, &v);
+        if (u<v) {
             int peso = rand() % 10 + 1;
-            sscanf(line, "%d %d", &u, &v);
-            if (u<v) {
-                xu = id_nodo[u];
-                xv = id_nodo[v];
-                g.addEdge(xu, xv, peso);
-                cout<<xu<<" "<<xv<<" "<<peso<<endl;
-            }
+            int xu = id_nodo[u];
+            int xv = id_nodo[v];
+            j++;
+            g.addEdge(xu, xv, peso);
 
         }
-            fclose(dataset);
-            return 0;
+    }
+        printf("numero de aristas dirigidas: " "%d\n", m);
+        printf("numero de aristas no dirigidas: " "%d\n", j);
+    fclose(dataset2);
+    return 0;
     }
 
 
