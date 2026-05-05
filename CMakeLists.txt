@@ -5,5 +5,7 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_executable(eda_pf src/main.cpp
         src/loader.cpp
-        src/loader.h)
+        src/loader.h
+        src/graph.cpp
+        src/graph.h)
 

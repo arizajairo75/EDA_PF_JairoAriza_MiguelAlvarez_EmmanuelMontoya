@@ -1,16 +1,22 @@
 #include "loader.h"
+#include "graph.h"
 #include <iostream>
 #include <unordered_map>
 #include <string>
-using namespace std;
 
-    FILE* loader::cargarDataset(const std::string& path) {
+using namespace std;
+graph graph;
+
+unordered_map<int,int> id_nodo;
+int i = 0;//contador del id_nodo
+
+    FILE* loadData(const std::string& path) {
         FILE* dataset = fopen(path.c_str(), "r");
         return dataset;
     }
 
 
-    int loader::confirmarDataset(FILE* dataset) {
+    int confirmarData(FILE* dataset) {
 
         if(!dataset) {
             cout<<"error al abrir archivo."<<endl;
@@ -21,11 +27,11 @@ using namespace std;
         return 0;
     }
 
-    int loader::contadorNodos(FILE* dataset){
+    int numEdges(FILE* dataset){
 
         char line[199]; //aca se declara un el arreglo donde se guarda el nodo, el valor de la dimension es para que sea lo suficientemente grande como para almacenar el contenido del dataset
         unordered_map<int,int> id_nodo;
-        int i=0; //contador del id_nodo
+
 
 
         while(fgets(line, sizeof(line), dataset)){
@@ -45,13 +51,39 @@ using namespace std;
         }
         printf("nodos: " "%d\n", i);
 
-        return 0;
+        return i;
+        fclose(dataset);
     }
 
-int loader::contadorAristas(FILE* dataset) {
+      int listaAdj(FILE* dataset) {
+        srand(42);
+        char line[200];
+        int i = 0;
+        int xu;
+        int xv;
 
+        while (fgets(line, sizeof(line), dataset)) {
+            int u, v;
+
+            if (line [0] == '#') continue;
+            sscanf(line, "%d %d", &u, &v);
+            if (u<v) {
+                int peso = rand() % 10 + 1;
+                xu = id_nodo[u];
+                xv = id_nodo[v];
+                graph.addEdge(xu, xv, peso);
+            }
+
+
+
+
+        }
 
     }
+
+
+
+
 
 
 

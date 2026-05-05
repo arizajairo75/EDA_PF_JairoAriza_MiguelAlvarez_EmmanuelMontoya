@@ -3,16 +3,20 @@
 
 #include <string>
 #include <cstdio>
+#include <unordered_map>
 
 
-    class loader {
+class loader {
 
     public:
-        static FILE* cargarDataset(const std::string& path);
-        static int confirmarDataset(FILE* dataset);
-        static int contadorNodos(FILE* dataset);
-        static int contadorAristas(FILE* dataset);
+        FILE* loadData(const std::string& path);
+        int confirmarData(FILE* dataset);
+        int numEdges(FILE* dataset);
 
+
+    private:
+        std::unordered_map<int, int> id_nodo;
+        int i = 0;
     };
 
 
