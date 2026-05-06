@@ -3,8 +3,15 @@
 //
 #ifndef BFS_H
 #define BFS_H
-
+#include "graph.h"
+#include "loader.h"
 class bfs {
+private:
+    const
+
+
+public:
+    int bFS(graph& g, int nodeOrigen, int nodeDestino);
 
 
 };

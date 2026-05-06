@@ -1,6 +1,7 @@
 //
 // Created by monto on 04/05/2026.
 //
+
 #include <vector>
 #ifndef GRAPH_H
 #define GRAPH_H
@@ -13,6 +14,10 @@ private:
 
 
 public:
+    const std::vector<std::pair<int,int>> getVecinos(int nodo) const {
+        return adj[nodo];
+    }
+
     graph(int numNodos) {                 //constructor
         adj.resize(numNodos);
     }

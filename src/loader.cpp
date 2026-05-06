@@ -24,7 +24,7 @@ using namespace std;
         return 0;
     }
 
-    int loader::numEdges(FILE* dataset){
+    int loader::numNodos(FILE* dataset){
 
         char line[199]; //aca se declara un el arreglo donde se guarda el nodo, el valor de la dimension es para que sea lo suficientemente grande como para almacenar el contenido del dataset
 
@@ -58,8 +58,9 @@ using namespace std;
 
     while (fgets(line, sizeof(line), dataset2)) {
         int u, v;
-        m++;
+
         if (line[0] == '#') continue;
+        m++;
         sscanf(line, "%d %d", &u, &v);
         if (u<v) {
             int peso = rand() % 10 + 1;

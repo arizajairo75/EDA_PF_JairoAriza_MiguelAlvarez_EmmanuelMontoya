@@ -16,7 +16,7 @@ int main() {
     }else {
         return 1;
     }
-    int numAristas = p.numEdges(dataset);
+    int numAristas = p.numNodos(dataset);
     graph g(numAristas);
     p.listaAdj("data/roadNet-PA.txt", g);
 

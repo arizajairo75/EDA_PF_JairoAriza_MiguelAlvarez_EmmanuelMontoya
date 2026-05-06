@@ -12,7 +12,7 @@ class loader {
     public:
         FILE* loadData(const std::string& path);
         int confirmarData(FILE* dataset);
-        int numEdges(FILE* dataset);
+        int numNodos(FILE* dataset);
         int listaAdj(const std::string& path, graph& g);
 
 
