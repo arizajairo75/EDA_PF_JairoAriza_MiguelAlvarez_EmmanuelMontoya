@@ -58,8 +58,8 @@ using namespace std;
 
     while (fgets(line, sizeof(line), dataset2)) {
         int u, v;
-        m++;
         if (line[0] == '#') continue;
+        m++
         sscanf(line, "%d %d", &u, &v);
         if (u<v) {
             int peso = rand() % 10 + 1;
