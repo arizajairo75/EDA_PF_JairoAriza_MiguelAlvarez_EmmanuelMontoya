@@ -1,5 +1,9 @@
 #include "dijkstra.h"
-#include <limits> 
+#include "graph.h"
+#include <vector>
+#include <queue>
+#include <limits>
+#include <utility>
 
 std::vector<int> dijkstra(const graph& g, int origen, std::vector<int>& prev) {
   int n = g.numNodes;

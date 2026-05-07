@@ -17,7 +17,8 @@ int main() {
         return 1;
     }
     int numAristas = p.numEdges(dataset);
-    graph g(numAristas);
+    graph g;
+    g.resize(numAristas);
     p.listaAdj("data/roadNet-PA.txt", g);
 
     return 0;
