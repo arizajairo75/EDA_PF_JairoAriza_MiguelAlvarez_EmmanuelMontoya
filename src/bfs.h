@@ -7,11 +7,13 @@
 #include "loader.h"
 #include <queue>
 class bfs {
+
+
 private:
-    std::queue<int> nodosPorVisitar;
+
 
 public:
-    int bFS(graph& g, int nodeInicial, int nodeFinal);
+    int runBFS(graph& g, int nodeInicial, int nodeFinal);
 
 
 };

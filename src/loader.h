@@ -16,6 +16,10 @@ class loader {
         int listaAdj(const std::string& path, graph& g);
         int mayorGrado(graph& g);
 
+        int getNumNodes() const {
+            return numNodes;
+        }
+
 
     private:
         std::unordered_map<int, int> id_nodo;
