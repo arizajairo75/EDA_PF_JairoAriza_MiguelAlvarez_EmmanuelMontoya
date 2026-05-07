@@ -75,10 +75,3 @@ using namespace std;
     fclose(dataset2);
     return 0;
     }
-
-
-
-
-
-
-
