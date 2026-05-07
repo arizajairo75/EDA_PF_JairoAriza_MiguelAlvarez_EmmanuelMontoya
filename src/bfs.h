@@ -5,16 +5,17 @@
 #define BFS_H
 #include "graph.h"
 #include "loader.h"
+#include <queue>
 class bfs {
 private:
-    const
-
+    std::queue<int> nodosPorVisitar;
 
 public:
-    int bFS(graph& g, int nodeOrigen, int nodeDestino);
+    int bFS(graph& g, int nodeInicial, int nodeFinal);
 
 
 };
+
 
 
 

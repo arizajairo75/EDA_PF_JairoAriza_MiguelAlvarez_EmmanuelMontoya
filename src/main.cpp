@@ -16,9 +16,13 @@ int main() {
     }else {
         return 1;
     }
-    int numAristas = p.numNodos(dataset);
-    graph g(numAristas);
+    int nodos  = p.numNodos(dataset);
+    graph g(nodos);
     p.listaAdj("data/roadNet-PA.txt", g);
+
+
+    int gradoMax = p.mayorGrado(g);
+    std::cout<<"nodo con mayor grado: " << gradoMax << ". Con grado: "<< g.getVecinos(683267).size()<< std::endl;
 
     return 0;
 }

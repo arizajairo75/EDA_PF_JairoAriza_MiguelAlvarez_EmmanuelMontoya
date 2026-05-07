@@ -5,7 +5,7 @@
 #include "graph.h"
 
     void graph::addEdge(int u, int v, int peso) {
-        adj[u].push_back({peso,peso});
+        adj[u].push_back({v,peso});
         adj[v].push_back({u,peso});
     }
 

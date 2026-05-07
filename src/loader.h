@@ -14,11 +14,12 @@ class loader {
         int confirmarData(FILE* dataset);
         int numNodos(FILE* dataset);
         int listaAdj(const std::string& path, graph& g);
+        int mayorGrado(graph& g);
 
 
     private:
         std::unordered_map<int, int> id_nodo;
-        int i = 0;
+        int numNodes = 0;
         int j = 0;
         int m = 0;
     };

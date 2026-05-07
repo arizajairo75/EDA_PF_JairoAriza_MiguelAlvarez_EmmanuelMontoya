@@ -34,19 +34,18 @@ using namespace std;
             sscanf(line,"%d %d", &u, &v);//lee la linea y el primer valor lo guarda en u y el segundo en v
 
             if(id_nodo.find(u)==id_nodo.end()){
-                i++;
-                id_nodo[u]= i;
+                id_nodo[u]= numNodes;
+                numNodes++;
             }if(id_nodo.find(v)==id_nodo.end()){
-                i++;
-                id_nodo[v]= i;
+                id_nodo[v]= numNodes;
+                numNodes++;
             }
 
 
         }
-        printf("nodos: " "%d\n", i);
+        printf("nodos: " "%d\n", numNodes);
         fclose(dataset);
-        return i;
-
+        return numNodes;
     }
 
         int loader::listaAdj(const std::string& path, graph& g) {
@@ -76,6 +75,23 @@ using namespace std;
     fclose(dataset2);
     return 0;
     }
+
+
+
+int loader::mayorGrado(graph &g) {
+        int mayorGrado = 0;
+        int actualNodo;
+        for (int i =0; i<numNodes; i++) {
+            if (mayorGrado < g.getVecinos(i).size()) {
+                mayorGrado = g.getVecinos(i).size();
+                actualNodo = i;
+            }
+        }
+        return actualNodo;
+    }
+
+
+
 
 
 
