@@ -1,24 +1,15 @@
-//
-// Created by monto on 04/05/2026.
-//
 #include <vector>
 #ifndef GRAPH_H
 #define GRAPH_H
 
-
 class graph {
-
-private:
+public:
     std::vector<std::vector<std::pair<int,int>>> adj;
 
-
-public:
-    graph(int numNodos) {                 //constructor
+    graph(int numNodos) {
         adj.resize(numNodos);
     }
     void addEdge(int u, int v, int peso);
 };
 
-
-
-#endif //GRAPH_H
+#endif
