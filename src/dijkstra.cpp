@@ -4,6 +4,7 @@
 #include <queue>
 #include <limits>
 #include <utility>
+#include <algorithm>
 
 std::vector<int> dijkstra(const graph& g, int origen, std::vector<int>& prev) {
   int n = g.numNodes;
@@ -32,3 +33,15 @@ std::vector<int> dijkstra(const graph& g, int origen, std::vector<int>& prev) {
 
     return dist;
 }
+
+ std::vector<int> reconstruirCamino(const std::vector<int>& prev, int destino){
+     std::vector<int> camino;
+    int nodoActual = destino;
+    while (nodoActual != -1) {
+        camino.push_back(nodoActual);
+        nodoActual = prev[nodoActual];  
+    }
+    std::reverse(camino.begin(), camino.end());
+    return camino;
+ }
+   
