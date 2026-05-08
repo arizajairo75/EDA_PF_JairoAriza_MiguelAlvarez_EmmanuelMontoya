@@ -14,6 +14,10 @@ private:
 
 
 public:
+    int numNodos() const {
+        return (int)adj.size();
+    }
+
     const std::vector<std::pair<int,int>> getVecinos(int nodo) const {
         return adj[nodo];
     }

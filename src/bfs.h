@@ -16,6 +16,7 @@ public:
    std::vector<int> runBFS(graph& g, int nodeInicial);
 
 
+
 };
 
 

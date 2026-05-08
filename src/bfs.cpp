@@ -4,11 +4,10 @@
 #include "bfs.h"
 #include "loader.h"
 
-loader p;
 
 
 std::vector<int> bfs::runBFS(graph& g, int nodeInicial) {
-     std::vector<int> distancia (p.getNumNodes(), -1);
+     std::vector<int> distancia (g.numNodos(), -1);
      std::queue<int> q;
      distancia[nodeInicial] = 0;
      q.push(nodeInicial);
@@ -22,6 +21,7 @@ std::vector<int> bfs::runBFS(graph& g, int nodeInicial) {
                int vecino = vecinosActual[i].first;
                if (distancia[vecino]==-1) {
                     distancia[vecino]= distancia[nodeActual]+1;
+                    q.push(vecino);
                }
 
           }
@@ -30,6 +30,8 @@ std::vector<int> bfs::runBFS(graph& g, int nodeInicial) {
      }
      return distancia;
 }
+
+
 
 
 

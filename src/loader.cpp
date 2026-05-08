@@ -43,8 +43,8 @@ using namespace std;
 
 
         }
-        printf("nodos: " "%d\n", numNodes);
         fclose(dataset);
+        printf("nodos: " "%d\n", numNodes);
         return numNodes;
     }
 
