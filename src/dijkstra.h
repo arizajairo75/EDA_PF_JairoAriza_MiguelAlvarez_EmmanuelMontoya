@@ -8,7 +8,7 @@
 #include <queue>
 #include <utility>
 
-std::vector<int> dijkstra(const graph& g, int origen, std::vector<int>& prev);
+std::vector<int> dijkstra(const graph& g, int origen, std::vector<int>& prev, int& nodosExplorados);
 std::vector<int> reconstruirCamino(const std::vector<int>& prev, int destino);
-std::vector<int> dijkstra(const graph& g, int origen, std::vector<int>& prev,int& nodosExplorados);
+
 #endif

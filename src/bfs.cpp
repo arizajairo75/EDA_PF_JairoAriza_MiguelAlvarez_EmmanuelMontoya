@@ -3,9 +3,13 @@
 // edited by jairo on 06/05/2026.
 
 #include "bfs.h"
+#include "graph.h"
+#include <vector>
+#include <queue>
 #include <limits>
 
-std::vector<int> bfs(const graph& g, int origen, std::vector<int>& prev) {
+std::vector<int> bfs(const graph& g, int origen, std::vector<int>& prev, int& nodosExplorados) {
+    nodosExplorados = 0;
     int n = g.numNodes;
     std::vector<int> dist(n, std::numeric_limits<int>::max());
     prev.resize(n, -1);
@@ -17,6 +21,7 @@ std::vector<int> bfs(const graph& g, int origen, std::vector<int>& prev) {
     while (!q.empty()) {
         int u = q.front();
         q.pop();
+        nodosExplorados++;
 
         for (const auto& [v, peso] : g.getVecinos(u)) {
             if (dist[v] == std::numeric_limits<int>::max()) {
@@ -26,6 +31,5 @@ std::vector<int> bfs(const graph& g, int origen, std::vector<int>& prev) {
             }
         }
     }
-
     return dist;
 }

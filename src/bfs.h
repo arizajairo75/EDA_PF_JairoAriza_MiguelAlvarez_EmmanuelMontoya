@@ -9,7 +9,6 @@
 #include <vector>
 #include <queue>
 
-std::vector<int> bfs(const graph& g, int origen, std::vector<int>& prev);
-std::vector<int> bfs(const graph& g, int origen,std::vector<int>& prev,int& nodosExplorados);
+std::vector<int> bfs(const graph& g, int origen, std::vector<int>& prev, int& nodosExplorados);
 
 #endif

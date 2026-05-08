@@ -7,6 +7,7 @@
 #include <iostream>
 #include <chrono>
 #include <limits>
+#include <iomanip>
 
 void ejecutarConsultas(const graph& g, const std::string& archivoSalida) {
 
@@ -24,89 +25,67 @@ void ejecutarConsultas(const graph& g, const std::string& archivoSalida) {
     };
 
     std::ofstream archivo(archivoSalida);
-
     archivo << "consulta,origen,destino,dist_dijkstra,"
             << "saltos_bfs,nodos_dijkstra,nodos_bfs,"
             << "t_dijkstra_ms,t_bfs_ms\n";
 
     for (int i = 0; i < 10; i++) {
-
         int origen = consultas[i][0];
         int destino = consultas[i][1];
 
         if (g.idMap.find(origen) == g.idMap.end() ||
             g.idMap.find(destino) == g.idMap.end()) {
-
-            archivo << "Q" << (i + 1) << ","
-                    << origen << ","
-                    << destino << ","
-                    << "INF,INF,0,0,0,0\n";
-
+            archivo << "Q" << std::setw(2) << std::setfill('0') << (i+1)
+                    << "," << origen << "," << destino
+                    << ",INF,INF,0,0,0,0\n";
             continue;
         }
 
-        int origenId = g.idMap.at(origen);
+        int origenId  = g.idMap.at(origen);
         int destinoId = g.idMap.at(destino);
 
-        auto inicioDijkstra =
-            std::chrono::high_resolution_clock::now();
-
+        int nodosDijkstra = 0;
         std::vector<int> prevDijkstra;
+        auto inicioDijkstra = std::chrono::high_resolution_clock::now();
+        std::vector<int> distDijkstra = dijkstra(g, origenId, prevDijkstra, nodosDijkstra);
+        auto finDijkstra = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<double, std::milli> durDijkstra = finDijkstra - inicioDijkstra;
+        double tiempoDijkstra = durDijkstra.count();
 
-        std::vector<int> distDijkstra =
-            dijkstra(g, origenId, prevDijkstra);
-
-        auto finDijkstra =
-            std::chrono::high_resolution_clock::now();
-
-        std::chrono::duration<double, std::milli> duracionDijkstra =
-            finDijkstra - inicioDijkstra;
-
-        double tiempoDijkstra =
-            duracionDijkstra.count();
-
-        auto inicioBFS =
-            std::chrono::high_resolution_clock::now();
-
+        int nodosBFS = 0;
         std::vector<int> prevBFS;
+        auto inicioBFS = std::chrono::high_resolution_clock::now();
+        std::vector<int> distBFS = bfs(g, origenId, prevBFS, nodosBFS);
+        auto finBFS = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<double, std::milli> durBFS = finBFS - inicioBFS;
+        double tiempoBFS = durBFS.count();
 
-        std::vector<int> distBFS =
-            bfs(g, origenId, prevBFS);
-
-        auto finBFS =
-            std::chrono::high_resolution_clock::now();
-
-        std::chrono::duration<double, std::milli> duracionBFS =
-            finBFS - inicioBFS;
-
-        double tiempoBFS =
-            duracionBFS.count();
-
-        int distD = distDijkstra[destinoId];
+        int distD  = distDijkstra[destinoId];
         int saltos = distBFS[destinoId];
 
-        std::string distanciaStr;
-        std::string saltosStr;
-
-        if (distD == std::numeric_limits<int>::max()) {
-
-            distanciaStr = "INF";
-            saltosStr = "INF";
-
+        if (i == 0 || i == 5) {
+        std::vector<int> camino = reconstruirCamino(prevDijkstra, destinoId);
+        std::string nombreArchivo = "results/camino_Q0" + std::to_string(i == 0 ? 1 : 6) + ".txt";
+       std::ofstream fileCamino(nombreArchivo);
+        if (!fileCamino.is_open()) {
+        std::cout << "Error: no se pudo crear " << nombreArchivo << std::endl;
         } else {
-
-            distanciaStr = std::to_string(distD);
-            saltosStr = std::to_string(saltos);
+        for (int nodo : camino) {
+        fileCamino << nodo << "\n";
         }
+        fileCamino.close();
+        std::cout << "Camino guardado: " << nombreArchivo << std::endl;
+}
+}
 
-        archivo << "Q" << (i + 1) << ","
-        << origen << ","
-        << destino << ","
-        << distanciaStr << ","
-        << saltosStr << ","
-        << "0,0,"
-        << tiempoDijkstra << ","
-        << tiempoBFS << "\n";
+        std::string distanciaStr = (distD  == std::numeric_limits<int>::max()) ? "INF" : std::to_string(distD);
+        std::string saltosStr    = (saltos == std::numeric_limits<int>::max()) ? "INF" : std::to_string(saltos);
+
+        archivo << "Q" << std::setw(2) << std::setfill('0') << (i+1) << ","
+                << origen << "," << destino << ","
+                << distanciaStr << "," << saltosStr << ","
+                << nodosDijkstra << "," << nodosBFS << ","
+                << tiempoDijkstra << "," << tiempoBFS << "\n";
     }
 
     archivo.close();
