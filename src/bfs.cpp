@@ -3,6 +3,7 @@
 //
 #include "bfs.h"
 #include "loader.h"
+#include <iostream>
 
 
 
@@ -12,7 +13,7 @@ std::vector<int> bfs::runBFS(graph& g, int nodeInicial) {
      distancia[nodeInicial] = 0;
      q.push(nodeInicial);
      int nodeActual;
-
+     int compConexas;
      while (!q.empty()) {
           nodeActual = q.front();
           q.pop();
@@ -22,12 +23,14 @@ std::vector<int> bfs::runBFS(graph& g, int nodeInicial) {
                if (distancia[vecino]==-1) {
                     distancia[vecino]= distancia[nodeActual]+1;
                     q.push(vecino);
+                    compConexas++;
                }
 
           }
 
 
      }
+     std::cout <<"Componentes conexas: " << compConexas<<std::endl;
      return distancia;
 }
 
