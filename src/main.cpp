@@ -25,7 +25,7 @@ int main() {
     graph g(nodos);
     p.listaAdj("data/roadNet-PA.txt", g);
     auto finConsGrafo = std::chrono::high_resolution_clock::now();
-    auto duracionConsGrafo = std::chrono::duration_cast<std::chrono::seconds>(finConsGrafo - inicioConstGrafo);
+    auto duracionConsGrafo = std::chrono::duration_cast<std::chrono::milliseconds>(finConsGrafo - inicioConstGrafo);
 
 
 
@@ -40,7 +40,7 @@ int main() {
     std::vector<int> distancias = b.runBFS(g, gradoMax);
     int diametro = *std::max_element(distancias.begin(), distancias.end());
     auto finBFS = std::chrono::high_resolution_clock::now();
-    auto duracionBFS = std::chrono::duration_cast<std::chrono::seconds>(finBFS - inicioBFS );
+    auto duracionBFS = std::chrono::duration_cast<std::chrono::milliseconds>(finBFS - inicioBFS );
     std::cout <<"Diametro del grafo.(BFS)" << diametro<<std::endl;
 
 
