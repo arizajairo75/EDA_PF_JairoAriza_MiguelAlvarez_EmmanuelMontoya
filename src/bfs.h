@@ -13,7 +13,7 @@ private:
 
 
 public:
-    int runBFS(graph& g, int nodeInicial, int nodeFinal);
+   std::vector<int> runBFS(graph& g, int nodeInicial);
 
 
 };

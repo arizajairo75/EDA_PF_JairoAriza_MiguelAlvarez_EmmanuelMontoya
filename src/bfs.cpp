@@ -4,18 +4,31 @@
 #include "bfs.h"
 #include "loader.h"
 
+loader p;
 
 
-int bfs::runBFS(graph& g, int nodeInicial, int nodeFinal) {
-     std::vector<int> nodosVisitados(g.getVecinos(nodeInicial).size(), 0);
+std::vector<int> bfs::runBFS(graph& g, int nodeInicial) {
+     std::vector<int> distancia (p.getNumNodes(), -1);
      std::queue<int> q;
+     distancia[nodeInicial] = 0;
      q.push(nodeInicial);
-     nodosVisitados[nodeInicial] = 1;
-     for (int i =0; i<g.getVecinos(nodeInicial).size(); i++) {
+     int nodeActual;
+
+     while (!q.empty()) {
+          nodeActual = q.front();
+          q.pop();
+          const auto& vecinosActual = g.getVecinos(nodeActual);
+          for(int i=0; i<g.getVecinos(nodeActual).size(); i++ ) {
+               int vecino = vecinosActual[i].first;
+               if (distancia[vecino]==-1) {
+                    distancia[vecino]= distancia[nodeActual]+1;
+               }
+
+          }
 
 
      }
-
+     return distancia;
 }
 
 
