@@ -1,4 +1,3 @@
-//
 // edited by jairo on 06/05/2026.
 #ifndef GRAPH_H
 #define GRAPH_H
