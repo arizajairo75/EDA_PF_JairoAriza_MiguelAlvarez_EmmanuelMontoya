@@ -70,8 +70,8 @@ using namespace std;
 
         }
     }
-        printf("numero de aristas dirigidas: " "%d\n", m);
-        printf("numero de aristas no dirigidas: " "%d\n", j);
+        printf("numero de aristas no dirigidas: " "%d\n", m);
+        printf("numero de aristas  dirigidas: " "%d\n", j);
     fclose(dataset2);
     return 0;
     }

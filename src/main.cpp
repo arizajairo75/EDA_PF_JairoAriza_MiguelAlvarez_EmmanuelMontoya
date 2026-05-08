@@ -6,6 +6,7 @@
 #include <vector>
 #include <fstream>
 #include <algorithm>
+#include <chrono>
 
 
 int main() {
@@ -22,14 +23,16 @@ int main() {
     int nodos  = p.numNodos(dataset);
     graph g(nodos);
     p.listaAdj("data/roadNet-PA.txt", g);
+    double gradoPromedio = 2.0 * p.getNumEdges()/p.getNumNodes();
+    std::cout<<"grado promedio obtenido: "<< gradoPromedio<<std::endl;
 
     int gradoMax = p.mayorGrado(g);
-    std::cout<<"nodo con mayor grado: " << gradoMax << ". Con grado: "<< g.getVecinos(683267).size()<< std::endl;
+    std::cout<<"nodo con mayor grado: " << gradoMax << ". Con grado: "<< g.getVecinos(gradoMax).size()<< std::endl;
 
     bfs b;
     std::vector<int> distancias = b.runBFS(g, gradoMax);
     int diametro = *std::max_element(distancias.begin(), distancias.end());
-    std::cout << diametro<<std::endl;
+    std::cout <<"Diametro del grafo.(BFS)" << diametro<<std::endl;
     return 0;
 }
 

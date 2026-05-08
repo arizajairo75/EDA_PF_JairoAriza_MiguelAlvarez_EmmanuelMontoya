@@ -20,6 +20,10 @@ class loader {
             return numNodes;
         }
 
+        int getNumEdges() const {
+            return j;
+        }
+
 
     private:
         std::unordered_map<int, int> id_nodo;
