@@ -2,6 +2,7 @@
 #include "graph.h"
 #include "bfs.h"
 #include "consultas.h"
+#include "subgraph.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -14,7 +15,6 @@ int main() {
 
  
     auto inicioConstGrafo = std::chrono::high_resolution_clock::now();
-
     FILE* dataset = p.loadData("data/roadNet-PA.txt");
     if (p.confirmarData(dataset) == 0) {
         std::cout << "Procesando dataset..." << std::endl;
@@ -23,7 +23,7 @@ int main() {
         return 1;
     }
 
-    int nodos = p.numNodos(dataset);   // cuenta nodos unicos
+    int nodos = p.numNodos(dataset);   
     graph g(nodos);
     p.listaAdj("data/roadNet-PA.txt", g);
     std::cout << "Grafo cargado correctamente." << std::endl;
@@ -31,7 +31,7 @@ int main() {
     auto finConsGrafo = std::chrono::high_resolution_clock::now();
     auto duracionConsGrafo = std::chrono::duration_cast<std::chrono::milliseconds>(finConsGrafo - inicioConstGrafo);
 
-   
+    
     double gradoPromedio = 2.0 * p.getNumEdges() / p.getNumNodes();
     std::cout << "grado promedio obtenido: " << gradoPromedio << std::endl;
 
@@ -56,7 +56,6 @@ int main() {
         std::cout << "error en abrir resultados" << std::endl;
         return 1;
     }
-
     out << "Resultados del MODULO-A\n";
     out << "Estadisticas del grafo:\n";
     out << "   \n";
@@ -78,5 +77,7 @@ int main() {
     ejecutarConsultas(g, "results/consultas_p2p.csv");
     std::cout << "Archivo consultas_p2p.csv generado." << std::endl;
 
-    return 0;
-}
+    
+    std::vector<int> pathQ01 = {1, 2, 3, 4, 5};
+    std::vector<int> pathQ06 = {10, 11, 12, 13, 1};
+    std::cout << "Iniciando analisis de subgrafo (Modulo C).

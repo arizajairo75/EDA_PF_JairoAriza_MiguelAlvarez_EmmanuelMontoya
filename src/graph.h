@@ -14,15 +14,12 @@ private:
     std::vector<std::vector<std::pair<int,int>>> adj;
 
 public:
-   
     int numNodes;
     int numEdges;
     std::unordered_map<int,int> idMap;
 
-    
     graph() : numNodes(0), numEdges(0) {}
 
-   
     graph(int n) : numNodes(0), numEdges(0) {
         adj.resize(n);
     }
@@ -32,7 +29,6 @@ public:
 
     int numNodos() const { return (int)adj.size(); }
 
-   
     const std::vector<std::pair<int,int>>& getVecinos(int nodo) const;
 };
 
