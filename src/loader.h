@@ -21,7 +21,7 @@ class loader {
         }
 
         int getNumEdges() const {
-            return j;
+            return m;
         }
 
 

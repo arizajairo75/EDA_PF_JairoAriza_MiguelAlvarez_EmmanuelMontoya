@@ -13,7 +13,6 @@ std::vector<int> bfs::runBFS(graph& g, int nodeInicial) {
      distancia[nodeInicial] = 0;
      q.push(nodeInicial);
      int nodeActual;
-     int compConexas;
      while (!q.empty()) {
           nodeActual = q.front();
           q.pop();

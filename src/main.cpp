@@ -13,6 +13,7 @@
 //tiempo construccion grafo
 
 int main() {
+
     loader p;
     auto inicioConstGrafo = std::chrono::high_resolution_clock::now();
 
@@ -62,8 +63,20 @@ std::ofstream out("results/resultados.txt");
         return 1;
     }
 
-out << "Resultados del MODULO-A";
-    out<<"Es"
+out << "Resultados del MODULO-A"<<"\n";
+    out<<"Estadisticas del grafo: ";
+    out << "   "<<"\n";
+    out<<"Numero de nodos obtenido: "<< nodos<<" |  Valor SNAP: 1,088,092"<<"\n";
+    out << "   "<<"\n";
+    out<<"Numero de aristas no dirigidas obtenido "<< p.getNumEdges()<<" |   Valor SNAP: 1,541,898"<<"\n";
+    out << "   "<<"\n";
+    out<<"Nodos en la componente conexa principal obtenidos "<< b.getCompConexas()<<" |   Valor SNAP: 1,087,562"<<"\n";
+    out << "   "<<"\n";
+    out<<"Grado promedio obtenido: "<< gradoPromedio<<" |  Valor SNAP: 2.83"<<"\n";
+    out << "   "<<"\n";
+    out<<"Diametro partiendo desde el nodo de maxGrado: "<<diametro<<" |  Valor SNAP: no consultado"<<"\n";
+    out << "   "<<"\n";
+    out<<"Nodo de mayor grado obtenido: "<<gradoMax<<". Con grado: "<< g.getVecinos(gradoMax).size()<<"\n";
 
 
 

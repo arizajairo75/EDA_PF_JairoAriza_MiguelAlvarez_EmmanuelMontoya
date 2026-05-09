@@ -10,11 +10,14 @@ class bfs {
 
 
 private:
-
+int compConexas;
 
 public:
    std::vector<int> runBFS(graph& g, int nodeInicial);
 
+   int getCompConexas() const {
+       return compConexas;
+   }
 
 
 };

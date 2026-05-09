@@ -77,7 +77,6 @@ using namespace std;
     }
 
 
-
 int loader::mayorGrado(graph &g) {
         int mayorGrado = 0;
         int actualNodo;
