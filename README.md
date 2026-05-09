@@ -1,9 +1,9 @@
 # EDA_PF_JairoAriza_MiguelAlvarez_EmmanuelMontoya
 
 ## Integrantes
-- Jairo Ariza
-- Miguel Alvarez
-- Emmanuel Montoya
+- Jairo Andrés Ariza
+- Miguel  Ángel Álvarez Orozco
+- Emmanuel Montoya Salazar
 
 ## Descripción
 Análisis de la red vial de Pennsylvania usando el dataset roadNet-PA 
