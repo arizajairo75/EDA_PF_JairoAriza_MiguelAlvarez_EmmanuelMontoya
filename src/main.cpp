@@ -29,7 +29,7 @@ int main() {
     p.listaAdj("data/roadNet-PA.txt", g);
     auto finConsGrafo = std::chrono::high_resolution_clock::now();
     auto duracionConsGrafo = std::chrono::duration_cast<std::chrono::milliseconds>(finConsGrafo - inicioConstGrafo);
-
+//fin time consGrafo
 
 
     double gradoPromedio = 2.0 * p.getNumEdges()/p.getNumNodes();
@@ -38,19 +38,32 @@ int main() {
     int gradoMax = p.mayorGrado(g);
     std::cout<<"nodo con mayor grado: " << gradoMax << ". Con grado: "<< g.getVecinos(gradoMax).size()<< std::endl;
 
+
+    //tiempo bfs
     auto inicioBFS = std::chrono::high_resolution_clock::now();
     bfs b;
     std::vector<int> distancias = b.runBFS(g, gradoMax);
     int diametro = *std::max_element(distancias.begin(), distancias.end());
     auto finBFS = std::chrono::high_resolution_clock::now();
     auto duracionBFS = std::chrono::duration_cast<std::chrono::milliseconds>(finBFS - inicioBFS );
+
+
+
     std::cout <<"Diametro del grafo.(BFS)" << diametro<<std::endl;
-
-
-
     std::cout<<"tiempo de construccion del grafo: " << duracionConsGrafo<<std::endl;
     std::cout<<"tiempo de ejecucion del BFS: "<< duracionBFS<<std::endl;
 
+
+
+    //resultados formateo
+std::ofstream out("results/resultados.txt");
+    if (!out) {
+        std::cout << "error en abrir resultados";
+        return 1;
+    }
+
+out << "Resultados del MODULO-A";
+    out<<"Es"
 
 
 
