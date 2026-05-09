@@ -9,10 +9,13 @@
 #include <chrono>
 
 
+
 //tiempo construccion grafo
-auto inicioConstGrafo = std::chrono::high_resolution_clock::now();
+
 int main() {
     loader p;
+    auto inicioConstGrafo = std::chrono::high_resolution_clock::now();
+
     FILE* dataset = p.loadData("data/roadNet-PA.txt");
 
 
