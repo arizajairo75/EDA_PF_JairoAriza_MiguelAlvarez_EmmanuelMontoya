@@ -72,13 +72,9 @@ using namespace std;
     }
         printf("numero de aristas dirigidas: " "%d\n", m);
         printf("numero de aristas no dirigidas: " "%d\n", j);
+         g.idMap = id_nodo;
+         g.numNodes = i;
+        g.numEdges = j;
     fclose(dataset2);
     return 0;
     }
-
-
-
-
-
-
-
