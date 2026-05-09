@@ -41,11 +41,6 @@ int loader::numNodos(FILE* dataset) {
     return numNodes;
 }
 
-
-int loader::numEdges(FILE* dataset) {
-    return numNodos(dataset);
-}
-
 int loader::listaAdj(const std::string& path, graph& g) {
     FILE* dataset2 = fopen(path.c_str(), "r");
     if (!dataset2) return 1;
