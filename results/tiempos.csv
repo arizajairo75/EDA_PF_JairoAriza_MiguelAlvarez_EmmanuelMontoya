@@ -1,0 +1,13 @@
+modulo,operacion,tiempo_ms
+B,dijkstra_Q01,263.351
+B,dijkstra_Q02,296.502
+B,dijkstra_Q03,245.145
+B,dijkstra_Q04,253.616
+B,dijkstra_Q05,239.329
+B,dijkstra_Q06,252.55
+B,bfs_Q01,53.0758
+B,bfs_Q02,54.0874
+B,bfs_Q03,54.4503
+B,bfs_Q04,52.5247
+B,bfs_Q05,68.4228
+B,bfs_Q06,58.2359

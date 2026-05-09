@@ -1,0 +1,13 @@
+Resultados del MODULO-A
+Estadisticas del grafo:    
+Numero de nodos obtenido: 1088092 |  Valor SNAP: 1,088,092
+   
+Numero de aristas no dirigidas obtenido 3083796 |   Valor SNAP: 1,541,898
+   
+Nodos en la componente conexa principal obtenidos 8755376 |   Valor SNAP: 1,087,562
+   
+Grado promedio obtenido: 5.66826 |  Valor SNAP: 2.83
+   
+Diametro partiendo desde el nodo de maxGrado: 592 |  Valor SNAP: no consultado
+   
+Nodo de mayor grado obtenido: 683267. Con grado: 9

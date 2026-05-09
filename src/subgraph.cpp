@@ -48,7 +48,7 @@ void ejecutarModuloC(const std::vector<int>& pathQ01, const std::vector<int>& pa
     srand(42);
 
     for (int u : nodosSubgrafo) {
-        for (const auto& par : g.adj[u]) { 
+       for (const auto& par : g.getVecinos(u)) {
             int v = par.first;
             if (nodosSubgrafo.count(v)) {
                 int peso = rand() % 100 + 1;
